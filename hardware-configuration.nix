@@ -24,6 +24,18 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/mnt/HDD" =
+    { device = "/dev/sda1";
+      fsType = "lowntfs-3g";
+      options = [ "uid=1000" "gid=1000" "rw" "user" "exec" "umask=000" "nofail" ];
+    };
+
+  fileSystems."/mnt/Windows" =
+    { device = "/dev/nvme0n1p3";
+      fsType = "lowntfs-3g";
+      options = [ "uid=1000" "gid=1000" "rw" "user" "exec" "umask=000" "nofail" ];
+    };
+  
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -58,7 +58,7 @@
     prismlauncher
     obs-studio
     obs-cmd
-    onlyoffice
+    onlyoffice-desktopeditors
     steam
     fastfetch
     wget
@@ -68,6 +68,8 @@
     foot
     spotify
     spicetify-cli
+    keepassxc
+    ntfs3g
   ];
 
   # Configure keymap in X11
@@ -78,7 +80,7 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  services.pulseaudio.enable = true;
+  services.pipewire.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
