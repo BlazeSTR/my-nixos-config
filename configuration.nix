@@ -36,7 +36,7 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
+  nixpkgs.config.allowUnfree = true;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm = {
@@ -48,6 +48,26 @@
     vim
     kdePackages.konsole
     kdePackages.dolphin
+    neovim
+    git
+    btop
+    sbctl
+    vlc
+    vscode
+    discord
+    prismlauncher
+    obs-studio
+    obs-cmd
+    onlyoffice
+    steam
+    fastfetch
+    wget
+    flatpak
+    faugus-launcher
+    wine-staging
+    foot
+    spotify
+    spicetify-cli
   ];
 
   # Configure keymap in X11
@@ -58,12 +78,7 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
+  services.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
