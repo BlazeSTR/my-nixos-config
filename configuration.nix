@@ -8,13 +8,15 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Secure boot lanzaboote
+      ./lanzaboote.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
+  # systemd-boot bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
+# Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixosBTW"; # Define your hostname.
@@ -45,33 +47,52 @@
   };
   services.desktopManager.plasma6.enable = true;
   environment.systemPackages = with pkgs; [
-    vim
-    kdePackages.konsole
-    kdePackages.dolphin
-    neovim
-    git
+
+    # --- System Utilities & Core Tools ---
     btop
-    sbctl
-    vlc
-    vscode
-    discord
-    prismlauncher
-    obs-studio
-    obs-cmd
-    onlyoffice-desktopeditors
-    steam
     fastfetch
-    wget
     flatpak
-    faugus-launcher
-    wine-staging
+    git
+    ntfs3g
+    wget
+    lon
+    
+    # --- Development & Build Tools ---
+    cmake
+    gcc
+    
+    # --- Text Editors ---
+    neovim
+    vim
+    vscode
+
+    # --- Terminals ---
     foot
+    kdePackages.konsole
+
+    # --- File Management & Productivity ---
+    kdePackages.dolphin
+    keepassxc
+    onlyoffice-desktopeditors
+
+    # --- Communication & Audio ---
+    discord
     spotify
     spicetify-cli
-    keepassxc
-    ntfs3g
-  ];
+    zapzap
 
+    # --- Gaming ---
+    faugus-launcher
+    heroic
+    prismlauncher
+    steam
+    wine-staging
+
+    # --- Media Production & Playback ---
+    obs-cmd
+    obs-studio
+    vlc
+  ];
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -95,6 +116,8 @@
   };
 
   programs.firefox.enable = true;
+  programs.steam.enable = true;
+  services.flatpak.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
